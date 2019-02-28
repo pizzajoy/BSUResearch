@@ -31,10 +31,10 @@ def filter(wifiAddressIn):
 
     return [wifiSsid, wifiSignal, wifiAddress]
 
-def signal2Distance(wifiSignal, n, PLd0, d0, PLd): #n= -1.4416, d0 = 1
+def signal2Distance(wifiSignal, n, PLd0, d0, PLd): #n= -1.4416, d0 = 1, PLd0 = 1
     #print(wifiSignal, n, PLd0, d0, PLd) 
     PLdPower = (10**PLd)/10
-    distance =  d0*(10**((-wifiSignal)-PLd0)/10*n) 
+    distance =  d0*(10**(((-wifiSignal)-PLd0)/10*n)) 
     return distance
 
 def robbyEquationX(wifiDistance, wifiLocationX, wifiLocationY):
@@ -66,13 +66,13 @@ def getDist(p0,p1): # initial and current position of Robby
 
 def test():
     n= -1.4416
-    d0 = 1 
-    PLd0 = 1
-    PLd= 1
+    d0 = 1  #need these values
+    PLd0 = 1 #
+    PLd= 1#
     print(list())
     wifiLocationX = [0,10,50]
     wifiLocationY = [0,40,10] 
-    desiredAddress = ['72:3A:CB:C0:43:E4', '30:FD:38:F0:7F:2A', '70:3A:CB:C0:43:EA']
+    desiredAddress = ['70:3A:CB:C0:43:E6', '70:3A:CB:D4:C2:15', 'CC:40:D0:17:FB:DA'] #CASA: Viger Studio, Viger living room, neighbor Netgear10
     startPosition =  robbyPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0, PLd) #wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0, PLd
     print(startPosition)
 
