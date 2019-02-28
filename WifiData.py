@@ -1,4 +1,5 @@
-#python3 -m pip install wifi 
+#python3 -m pip install wifi
+#YOYOYO
 import math
 # https://pypi.org/project/python-wifi/ another library for wifi
 from wifi import Cell, Scheme # https://wifi.readthedocs.io/en/latest/
