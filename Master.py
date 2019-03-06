@@ -18,8 +18,8 @@ class Test:
     odometryOn = 1
     wifiOn = 0
     try:
-        MotorControl.Motor_Forward()
-        MotorControl.Motor_Stop()
+        MotorControl.Motor_Forward() #This is the init to start the wheels
+        #MotorControl.Motor_Stop()
         if wifiOn == 1:
             done=0
             while(done==0):
@@ -47,17 +47,19 @@ class Test:
                     print('A wifi is not available ',datetime.datetime.now())
                      
              #ODOMETRY
-            step = Odometry.stepCounter()
-            stepCm =(Odometry.step2cm(step))
-            
+                
             if(odometryOn==1):
+                step = Odometry.stepCounter()
+                stepCm =(Odometry.step2cm(step))
                 if(step != prevStep): #reporting step
                     print(stepCm, step)
                     prevStep=step
-                if(stepCm >= 1.8):
-                    MotorControl.Motor_Stop() ## stop wheel
-                if(stepCm < 1.8):
-                    MotorControl.Motor_Forward()
+                    if(stepCm >= 30):
+                        MotorControl.Motor_Stop() ## stop wheel
+                    if(stepCm < 30):
+                        MotorControl.Motor_Forward()
+                        
+            
     except KeyboardInterrupt:
         MotorControl.Motor_Stop()
         GPIO.cleanup()

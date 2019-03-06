@@ -1,6 +1,7 @@
 #python3 -m pip install wifi
 #YOYOYO
 import math
+import timeit
 # https://pypi.org/project/python-wifi/ another library for wifi
 from wifi import Cell, Scheme # https://wifi.readthedocs.io/en/latest/
 def list(): 
@@ -74,8 +75,11 @@ def test():
     print(list())
     wifiLocationX = [0,60.96, 60.96] #needs to be in centimeters
     wifiLocationY = [0,60.96,60.96] 
-    desiredAddress = ['30:FD:38:F0:DA:3B', '30:FD:38:F0:99:E8', '30:FD:38:F0:7F:2E'] # setup3ADB0,setup99E80,setup7F2E0
-    startPosition =  robbyPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0) #wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0
-    print(startPosition)
+    #desiredAddress = ['30:FD:38:F0:DA:3B', '30:FD:38:F0:99:E8', '30:FD:38:F0:7F:2E'] # setup3ADB0,setup99E80,setup7F2E0
+    desiredAddress = ['70:3A:CB:C0:43:E6', '70:3A:CB:D4:C2:15', 'CC:40:D0:17:FB:DA'] #CASA: Viger Studio, Viger living room, neighbor Netgear10
+    for i in range(6):
+        start = timeit.timeit()
+        startPosition =  robbyPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0) #wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0
+        print("Time: ", timeit.timeit()-start)
 
 #test()

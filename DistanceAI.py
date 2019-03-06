@@ -1,0 +1,1 @@
+# This class will contain the decision algorithm that attributes 'credibility' weights to odometry and wifi-distance
