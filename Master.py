@@ -15,8 +15,8 @@ class Test:
     desiredAddress = ['72:3A:CB:C0:43:E4', '50:C7:BF:96:D4:AE', '70:3A:CB:C0:43:EA']
     wifiLocationX = [0,10,50]
     wifiLocationY = [0,40,10] # relative to first point
-    odometryOn = 0
-    wifiOn = 1
+    odometryOn = 1
+    wifiOn = 0
     try:
         MotorControl.Motor_Forward()
         MotorControl.Motor_Stop()
@@ -47,14 +47,17 @@ class Test:
                     print('A wifi is not available ',datetime.datetime.now())
                      
              #ODOMETRY
+            step = Odometry.stepCounter()
+            stepCm =(Odometry.step2cm(step))
+            
             if(odometryOn==1):
-                step = Odometry.stepCounter()
                 if(step != prevStep): #reporting step
-                    stepCm =(Odometry.step2cm(step))
                     print(stepCm, step)
                     prevStep=step
-                if(stepCm >= 30):
-                    MotorControl.Motor_Stop() ## stop wheel        
+                if(stepCm >= 1.8):
+                    MotorControl.Motor_Stop() ## stop wheel
+                if(stepCm < 1.8):
+                    MotorControl.Motor_Forward()
     except KeyboardInterrupt:
         MotorControl.Motor_Stop()
         GPIO.cleanup()

@@ -8,6 +8,8 @@ TODO:
 - Output distrance traveled by the robot DONE
 """
 import RPi.GPIO as GPIO
+#import MotorControl.py
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(24,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 step = 0
@@ -21,5 +23,18 @@ def stepCounter():
         prevX = currX
     return step
 def step2cm(step):
+    print((step/72)*40 )
     return (step/72)*40 #returns total distance 
-    # 48 ticks = 1 rotation = 20.2 centimeters   
+    # 48 ticks = 1 rotation = 20.2 centimeters
+##def test():
+##    step = stepCounter()
+##        if(step != prevStep): #reporting step
+##                stepCm =(step2cm(step))
+##                print(stepCm, step)
+##                prevStep=step
+##                print(step)
+##        if(stepCm >= 30):
+##                    MotorControl.Motor_Stop() ## stop wheel        
+##    except KeyboardInterrupt:
+##        MotorControl.Motor_Stop()
+##        GPIO.cleanup()
