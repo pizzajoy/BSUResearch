@@ -3,7 +3,7 @@ right wheel is pin 23. 1 is light on, 0 is light off
 left  wheel is pin 24. 1 is light on, 0 is light off
 """
 import RPi.GPIO as GPIO
-import MotorControl.py
+import MotorControl
 import DynamicWeightAllocation
 
 

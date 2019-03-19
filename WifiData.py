@@ -1,8 +1,9 @@
 #python3 -m pip install wifi
 import math
-import timeit
+from wifi import Cell, Scheme # https://wifi.readthedocs.io/en/latest/
+import time
 # https://pypi.org/project/python-wifi/ another library for wifi
-def list(): 
+def list():
     cells = Cell.all('wlan0')
     wifiSsid = []
     wifiSignal = []
@@ -16,6 +17,7 @@ def list():
 
 
 def filter(wifiAddressIn):
+
     l = list()
     wifiSsid = []
     wifiSignal = []
@@ -28,7 +30,6 @@ def filter(wifiAddressIn):
             wifiAddress.append(l[2][searchIndex])
         except:
             print('Address not found: ', address)
-
     return [wifiSsid, wifiSignal, wifiAddress]
 
 def signal2Distance(wifiSignal, n, PLd0, d0): 
@@ -55,7 +56,7 @@ def WifiPosition(wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0):   #pow
     print('Wifi Signal:',wifiSignal)
     for signal in wifiSignal:
         wifiDistance.append(signal2Distance(signal, n, PLd0, d0))
-    print('Wifi Distance:',wifiDistance)
+    #print('Wifi Distance:',wifiDistance)
     robbyPosition= robbyEquationX(wifiDistance, wifiLocationX, wifiLocationY) #robbyEquationY(wifiDistance)]
     return robbyPosition
     
@@ -76,8 +77,10 @@ def test():
     #desiredAddress = ['30:FD:38:F0:DA:3B', '30:FD:38:F0:99:E8', '30:FD:38:F0:7F:2E'] # setup3ADB0,setup99E80,setup7F2E0
     desiredAddress = ['70:3A:CB:C0:43:E6', '70:3A:CB:D4:C2:15', 'CC:40:D0:17:FB:DA'] #CASA: Viger Studio, Viger living room, neighbor Netgear10
     for i in range(6):
-        start = timeit.timeit()
+        start = time.time()
         startPosition =  WifiPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0) #wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0
-        print("Time: ", timeit.timeit()-start)
+        print("I:",i," Time: ", time.time()-start)
 
 #test()
+
+        
