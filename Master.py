@@ -34,7 +34,6 @@ class Test:
         while(True):
 
              #WIFI
-
             if wifiOn == 1:
                 try:
                     WifiCurrentPosition = WifiData.WifiPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0, PLd)
