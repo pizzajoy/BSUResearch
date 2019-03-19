@@ -1,9 +1,7 @@
 #python3 -m pip install wifi
-#YOYOYO
 import math
 import timeit
 # https://pypi.org/project/python-wifi/ another library for wifi
-from wifi import Cell, Scheme # https://wifi.readthedocs.io/en/latest/
 def list(): 
     cells = Cell.all('wlan0')
     wifiSsid = []
@@ -51,7 +49,7 @@ def robbyEquationX(wifiDistance, wifiLocationX, wifiLocationY):
 ##    y = ((robbyEquationX(wifiDistance)) + wifiDistance[0])**2 -((wifiDistance[1])**2 )
 ##    return y
     
-def robbyPosition(wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0):   #powers must be vector for x and y axis, PLd0 or
+def WifiPosition(wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0):   #powers must be vector for x and y axis, PLd0 or
     wifiSignal = filter(wifiAddress)[1] # this is the distance (d_)
     wifiDistance = []
     print('Wifi Signal:',wifiSignal)
@@ -79,7 +77,7 @@ def test():
     desiredAddress = ['70:3A:CB:C0:43:E6', '70:3A:CB:D4:C2:15', 'CC:40:D0:17:FB:DA'] #CASA: Viger Studio, Viger living room, neighbor Netgear10
     for i in range(6):
         start = timeit.timeit()
-        startPosition =  robbyPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0) #wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0
+        startPosition =  WifiPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0) #wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0
         print("Time: ", timeit.timeit()-start)
 
 #test()
