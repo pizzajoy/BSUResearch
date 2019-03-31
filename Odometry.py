@@ -25,7 +25,7 @@ def stepCounter():
 
 def step2cm(step):
    # print((step/72)*40 )
-    return (step/72)*40 #returns total distance 
+    return (step/72)*40 #returns total distance
     # 48 ticks = 1 rotation = 20.2 centimeters
 
 def get_odometry_dist():
@@ -38,12 +38,12 @@ def test(odoCounter = 0,prevStep = 0, step = 0):
     if (step != prevStep):  # reporting step
         print(stepCm, step)
         prevStep = step
-        if (stepCm >= 30):
+        if (stepCm >= 22.73):
             MotorControl.Motor_Stop()  ## stop wheel
             odoCounter += 1
             if (DynamicWeightAllocation.checkOutliers() == 0):
                 odoCounter = 0
             print(odoCounter)
-        if (stepCm < 30):
+        if (stepCm < 22.75):
             MotorControl.Motor_Forward()
         return step2cm(step)

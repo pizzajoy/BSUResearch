@@ -5,7 +5,7 @@ import math
 
 def checkOutliers(odoVal, wifiVal, thresholdPerc):
     outliers = 0
-    if (abs(1-(wifiVal/odoVal)) > thresholdPerc):
+    if (abs(1-(wifiVal/(odoVal))) > thresholdPerc):
         outliers = 1
     else:
         outliers = 0
@@ -15,6 +15,6 @@ def getPosition(odoVal, wifiVal, outliers):
     if(outliers == 1):
         newposition = odoVal
     else:
-        newposition = .5*odoVal + .5*wifiVal
+        newposition = .5*(odoVal) + .5*wifiVal
 
-    return newposition
+    return newposition 
