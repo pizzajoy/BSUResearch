@@ -39,7 +39,8 @@ class Test:
                 done = 1
                 print('Start Position', startPosition)
             except:
-                print('A wifi is not available on Start Position:',datetime.datetime.now())
+                #print('A wifi is not available on Start Position:',datetime.datetime.now())
+                print('.',end='')
     
     MotorControl.Motor_Forward()  # This is the init to start the wheels
     while(True):
@@ -74,7 +75,8 @@ class Test:
                         print('WifiCurentPosition:', WifiCurrentPosition)
                         done = 1
                     except: 
-                         print('Wifi error occured, try again:',datetime.datetime.now()) 
+                        #print('Wifi error occured, try again:',datetime.datetime.now())
+                        print('.',end='')
                 
             #COMBINED
             odoCounter += 1

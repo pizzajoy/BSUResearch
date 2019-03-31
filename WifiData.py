@@ -55,7 +55,7 @@ def robbyEquationX(wifiDistance, wifiLocationX, wifiLocationY):
 def WifiPosition(wifiAddress, wifiLocationX, wifiLocationY, n, PLd0, d0):   #powers must be vector for x and y axis, PLd0 or
     wifiSignal = filter(wifiAddress)[1] # this is the distance (d_)
     wifiDistance = []
-    print('Wifi Signal:',wifiSignal)
+    print('\nWifi Signal:',wifiSignal)
     for signal in wifiSignal:
         wifiDistance.append(signal2Distance(signal, n, PLd0, d0))
     #print('Wifi Distance:',wifiDistance)
