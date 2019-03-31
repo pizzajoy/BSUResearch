@@ -19,8 +19,8 @@ class Test:
     odoCounter = 0
     nextStop = 17
     #desiredAddress = ['72:3A:CB:C0:43:E4', '50:C7:BF:96:D4:AE', '70:3A:CB:C0:43:EA']
-    desiredAddress = ['30:FD:38:F0:DA:3B', '30:FD:38:F0:99:E8', '30:FD:38:F0:7F:2E'] # setup3ADB0,setup99E80,setup7F2E0
-    #desiredAddress = ['70:3A:CB:C0:43:E6', '70:3A:CB:D4:C2:15', 'CC:40:D0:17:FB:DA'] #CASA: Viger Studio, Viger living room, neighbor Netgear10
+    #desiredAddress = ['30:FD:38:F0:DA:3B', '30:FD:38:F0:99:E8', '30:FD:38:F0:7F:2E'] # setup3ADB0,setup99E80,setup7F2E0
+    desiredAddress = ['70:3A:CB:C0:43:E6', '70:3A:CB:D4:C2:15', 'CC:40:D0:17:FB:DA'] #CASA: Viger Studio, Viger living room, neighbor Netgear10
 ##    wifiLocationX = [0, 142, 142]
 ##    wifiLocationY = [0, -61, 61]  # relative to first point
     wifiLocationX = [0, 80, 437]
@@ -65,11 +65,16 @@ class Test:
             
             #CHECK WIFI
             if wifiOn == 1:
-                WifiCurrentPosition = WifiData.WifiPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0)
-                wifiDistance = WifiData.getDist(startPosition, WifiCurrentPosition)
-                #print('WifiDistance:', wifiDistance)
-                print('WifiCurentPosition:', WifiCurrentPosition)
-
+                done = 0
+                while done == 0:
+                    try:
+                        WifiCurrentPosition = WifiData.WifiPosition(desiredAddress, wifiLocationX, wifiLocationY, n, PLd0, d0)
+                        wifiDistance = WifiData.getDist(startPosition, WifiCurrentPosition)
+                        #print('WifiDistance:', wifiDistance)
+                        print('WifiCurentPosition:', WifiCurrentPosition)
+                        done = 1
+                    except: 
+                         print('Wifi error occured, try again:',datetime.datetime.now()) 
                 
             #COMBINED
             odoCounter += 1
