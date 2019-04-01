@@ -41,9 +41,9 @@ def signal2Distance(wifiSignal, n, PLd0, d0):
 def robbyEquationX(wifiDistance, wifiLocationX, wifiLocationY):
     #Generalized equation
     #x = (((wifiDistance[0])**2 - (wifiDistance[2])**2)- ((wifiLocationX[0])**2 - (wifiLocationX[2])**2) -  ((wifiLocationY[0])**2 - (wifiLocationY[2])**2)) / 2 / (wifiLocationX[2]-wifiLocationX[0])
-    x = wifiDistance[0]
+    x = ((wifiDistance[0]**2 - wifiDistance[1]**2 - wifiLocationX[0]**2 + wifiLocationX[1]**2 - wifiLocationY[0]**2 + wifiLocationY[1]**2 ) * (-2*wifiLocationY[1] + 2*wifiLocationY[2]) - (wifiDistance[1]**2 - wifiDistance[2]**2 - wifiLocationX[1]**2 + wifiLocationX[2]**2 - wifiLocationY[1]**2 + wifiLocationY[2]**2)*(-2*wifiLocationY[0] + 2*wifiLocationY[1])) / (-2*wifiLocationY[1] + 2*wifiLocationY[2])*(-2*wifiLocationX[0] + 2*wifiLocationX[1])-(-2*wifiLocationY[0] + 2*wifiLocationY[1])*(-2*wifiLocationX[1] + 2*wifiLocationY[2])
     #print('Robby Position X:',x)
-    print('D1, D3:', wifiDistance[0], wifiDistance[2])
+    print('D1,D2,D3:', wifiDistance[0], wifiDistance[1], wifiDistance[2])
     
     return x
 
